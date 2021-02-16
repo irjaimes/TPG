@@ -76,7 +76,7 @@ const managerPrompt = () => {
         })
         .then(managerInfo => {
             // call employeePrompt and pass manager info as parameter
-            //employeePrompt(managerInfo)
+            employeePrompt(managerInfo)
         })
 }
 
@@ -146,7 +146,7 @@ const engineerPrompt = () => {
             // push new item to employee list array
             employeeList.push(engineer)
             // call employeePrompt
-            //     employeePrompt()
+            employeePrompt()
         })
 }
 
@@ -214,10 +214,48 @@ const internPrompt = () => {
             const intern = new Intern(internInfo.interName, internInfo.internID, internInfo.internEmail, internInfo.internSchool)
             // push new Intern item into employeeList array
             employeeList.push(intern)
-            //promptEmployee()
+            employeePrompt()
         })
 }
-//managerPrompt();
 
-//engineerPrompt();
-//internPrompt();
+// prompt inquiries for new employee selection
+const employeePrompt = () => {
+    return inquirer.prompt(
+        {
+            type: 'list',
+            name: 'newEmployee',
+            message: "Would you like to add another employee to the team profile?",
+            choices: ['Engineer', 'Intern', 'Done']
+        })
+        .then(promptData => {
+            // if engineer is selected, initiate engineer data prompts
+            if (promptData.newEmployee === 'Engineer') {
+                engineerPrompt();
+            }
+            // if intern is selected, initiate intern data prompts
+            else if (promptData.newEmployee === 'Intern') {
+                internPrompt();
+            }
+            else {
+                // if Done, console message and compile data
+                console.log("Your team profile is being writen to index.html!")
+                compile()
+            }
+        })
+}
+function compile() {
+    console.log(employeeList);
+
+    const teamData = { ...employeeList }
+    console.log(teamData)
+
+    const teamWebPage = generateHTML(teamData)
+
+    // write team's data into HTML file
+    fs.writeFile('./dist/index.html', teamWebPage, err => {
+        if (err) throw new Error(err);
+        console.log('Team Profile created! Check it out in your dist folder!')
+    })
+}
+
+managerPrompt();
