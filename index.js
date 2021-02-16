@@ -141,8 +141,8 @@ const engineerPrompt = () => {
                 }
             }
         ])
-        .then(engineerData => {
-            const engineer = new Engineer(engineerData.engineerName, engineerData.engineerID, engineerData.engineerEmail, engineerData.engineerGithub)
+        .then(engineerInfo => {
+            const engineer = new Engineer(engineerInfo.engineerName, engineerInfo.engineerID, engineerInfo.engineerEmail, engineerInfo.engineerGithub)
             // push new item to employee list array
             employeeList.push(engineer)
             // call employeePrompt
@@ -151,6 +151,8 @@ const engineerPrompt = () => {
 }
 
 
+
 //managerPrompt();
 
-engineerPrompt();
+//engineerPrompt();
+internPrompt();
