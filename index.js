@@ -16,8 +16,8 @@ const managerPrompt = () => {
                 type: 'input',
                 name: 'managerName',
                 message: "What is the team manager's name?",
-                validate: manaNameInput => {
-                    if (manaNameInput) {
+                validate: managerNameInput => {
+                    if (managerNameInput) {
                         return true
                     }
                     else {
@@ -71,12 +71,86 @@ const managerPrompt = () => {
         ])
         .then(managerInfo => {
             const manager = new Manager(managerInfo.managerName, managerInfo.managerId, managerInfo.managerEmail, managerInfo.managerOffice)
+            // push new item to employee list array
             employeeList.push(manager)
         })
-        // .then(managerInfo => {
-        //     employeePrompt(managerInfo)
-        // })
+        .then(managerInfo => {
+            // call employeePrompt and pass manager info as parameter
+            //employeePrompt(managerInfo)
+        })
+}
+
+// prompt inquiries for engineer data
+const engineerPrompt = () => {
+    return inquirer.prompt(
+        [
+            {
+                type: 'input',
+                name: 'engineerName',
+                message: "What is the engineer's name?",
+                validate: engineerNameInput => {
+                    if (engineerNameInput) {
+                        return true
+                    }
+                    else {
+                        console.log("Please enter the engineer's name!")
+                        return false;
+                    }
+                }
+            },
+            {
+                type: 'input',
+                name: 'engineerID',
+                message: "What is the engineer's ID Number?",
+                validate: engineerIDInput => {
+                    if (engineerIDInput > 0) {
+                        return true
+                    }
+                    else {
+                        console.log("Please enter a valid ID number!")
+                        return false;
+                    }
+                }
+            },
+            {
+                type: 'input',
+                name: 'engiEmail',
+                message: "What is the engineer's email address?",
+                validate: engiEmailInput => {
+                    if (engiEmailInput) {
+                        return true
+                    }
+                    else {
+                        console.log("Please enter the engineer's email address!")
+                        return false;
+                    }
+                }
+            },
+            {
+                type: 'input',
+                name: 'engineerGithub',
+                message: "What is the engineer's GitHub username?",
+                validate: engineerGBInput => {
+                    if (engineerGBInput) {
+                        return true
+                    }
+                    else {
+                        console.log("Please enter the engineer's GitHub username!")
+                        return false;
+                    }
+                }
+            }
+        ])
+        .then(engineerData => {
+            const engineer = new Engineer(engineerData.engiName, engineerData.engiId, engineerData.engiEmail, engineerData.engiGithub)
+            // push new item to employee list array
+            employeeList.push(engineer)
+            // call employeePrompt
+            //     employeePrompt()
+        })
 }
 
 
-managerPrompt();
+//managerPrompt();
+
+engineerPrompt();
