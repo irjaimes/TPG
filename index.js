@@ -114,7 +114,7 @@ const engineerPrompt = () => {
             },
             {
                 type: 'input',
-                name: 'engiEmail',
+                name: 'engineerEmail',
                 message: "What is the engineer's email address?",
                 validate: engiEmailInput => {
                     if (engiEmailInput) {
@@ -142,7 +142,7 @@ const engineerPrompt = () => {
             }
         ])
         .then(engineerData => {
-            const engineer = new Engineer(engineerData.engiName, engineerData.engiId, engineerData.engiEmail, engineerData.engiGithub)
+            const engineer = new Engineer(engineerData.engineerName, engineerData.engineerID, engineerData.engineerEmail, engineerData.engineerGithub)
             // push new item to employee list array
             employeeList.push(engineer)
             // call employeePrompt
