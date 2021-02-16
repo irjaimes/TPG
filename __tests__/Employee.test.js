@@ -5,7 +5,6 @@ test("create Employee parent class", () => {
 
     expect(typeof (employee)).toBe("object");
     
-    //console.log(employee);
 });
 
 test("set employee name as argument", () => {
