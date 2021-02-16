@@ -11,6 +11,7 @@ test("set manager office number as argument", () => {
 test("set getRole() to return 'Manager' role", () => {
     const testValue = "Manager";
     const employee = new Manager("John", 12345, "john@email.com", 713);
+    
     expect(employee.getRole()).toBe(testValue);
     
 });
@@ -18,5 +19,6 @@ test("set getRole() to return 'Manager' role", () => {
 test("set getOffice() to return office number", () => {
     const testValue = 713;
     const employee = new Manager("John", 12345, "john@email.com", testValue);
+
     expect(employee.getOfficeNumber()).toBe(testValue);
 });
