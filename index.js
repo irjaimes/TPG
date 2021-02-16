@@ -150,9 +150,74 @@ const engineerPrompt = () => {
         })
 }
 
-
-
+const internPrompt = () => {
+    return inquirer.prompt(
+        [
+            {
+                type: 'input',
+                name: 'internName',
+                message: "What is the intern's name?",
+                validate: internNameInput => {
+                    if (internNameInput) {
+                        return true
+                    }
+                    else {
+                        console.log("Please enter the intern's name!")
+                        return false;
+                    }
+                }
+            },
+            {
+                type: 'input',
+                name: 'internID',
+                message: "What is the intern's ID Number?",
+                validate: internIDInput => {
+                    if (internIDInput > 0) {
+                        return true
+                    }
+                    else {
+                        console.log("Please enter a valid ID number!")
+                        return false;
+                    }
+                }
+            },
+            {
+                type: 'input',
+                name: 'internEmail',
+                message: "What is the intern's email address?",
+                validate: internEmailInput => {
+                    if (internEmailInput) {
+                        return true
+                    }
+                    else {
+                        console.log("Please enter the intern's email address!")
+                        return false;
+                    }
+                }
+            },
+            {
+                type: 'input',
+                name: 'internSchool',
+                message: "What school does the intern attend?",
+                validate: internSchoolInput => {
+                    if (internSchoolInput) {
+                        return true
+                    }
+                    else {
+                        console.log("Please enter the intern's school!")
+                        return false;
+                    }
+                }
+            }
+        ])
+        .then(internInfo => {
+            const intern = new Intern(internInfo.interName, internInfo.internID, internInfo.internEmail, internInfo.internSchool)
+            // push new Intern item into employeeList array
+            employeeList.push(intern)
+            //promptEmployee()
+        })
+}
 //managerPrompt();
 
 //engineerPrompt();
-internPrompt();
+//internPrompt();
