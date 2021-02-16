@@ -1,1 +1,3 @@
-# TPG
+# OOP - TPG
+# Team Profile Generator
+
