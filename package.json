@@ -1,0 +1,23 @@
+{
+  "name": "team-profile-gen",
+  "version": "1.0.0",
+  "description": "Using OPP and jest testing for Week 10 Challenge",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/irjaimes/TPG.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/irjaimes/TPG/issues"
+  },
+  "homepage": "https://github.com/irjaimes/TPG#readme",
+  "dependencies": {
+    "inquirer": "^7.3.3",
+    "jest": "^26.6.3"
+  }
+}
